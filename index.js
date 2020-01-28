@@ -18,7 +18,7 @@ function show(file) {
         let data = new Uint8Array(reader.result);
         wasm_bindgen.show(data);
 
-        document.getElementById("msg").style.visibility = "hidden";
+        document.getElementById("drop").style.display = "none";
     };
     reader.readAsArrayBuffer(file);
 }
