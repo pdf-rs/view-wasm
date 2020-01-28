@@ -16,7 +16,12 @@ function show(file) {
     let reader = new FileReader();
     reader.onload = function() {
         let data = new Uint8Array(reader.result);
-        wasm_bindgen.show(data);
+        try {
+            wasm_bindgen.show(data)
+        } catch {
+            document.getElementById("msg").innerHTML = "oops. try another one.";
+            return;
+        }
 
         document.getElementById("drop").style.display = "none";
     };
