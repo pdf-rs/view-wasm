@@ -1,7 +1,8 @@
 wasm_bindgen("pkg/pdf_view_bg.wasm").catch(console.error)
 .then(function() {
-    document.getElementById("msg").innerHTML = "Drop a PDF here";
+    display("Drop a PDF here");
 });
+
 function drop_handler(e) {
     e.stopPropagation();
     e.preventDefault();
@@ -12,6 +13,11 @@ function dragover_handler(e) {
     e.preventDefault();
 }
 
+function display(msg) {
+    delete document.getElementById("drop").style.display;
+    document.getElementById("msg").innerText = msg;
+}
+
 function show(file) {
     let reader = new FileReader();
     reader.onload = function() {
@@ -19,7 +25,7 @@ function show(file) {
         try {
             wasm_bindgen.show(data)
         } catch {
-            document.getElementById("msg").innerHTML = "oops. try another one.";
+            display("oops. try another one.");
             return;
         }
 
