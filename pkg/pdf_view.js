@@ -338,6 +338,43 @@ class WasmView {
             heap[stack_pointer++] = undefined;
         }
     }
+    /**
+    * @param {any} data
+    * @returns {boolean}
+    */
+    data(data) {
+        try {
+            var ret = wasm.wasmview_data(this.ptr, addBorrowedObject(data));
+            return ret !== 0;
+        } finally {
+            heap[stack_pointer++] = undefined;
+        }
+    }
+    /**
+    * @returns {boolean}
+    */
+    idle() {
+        var ret = wasm.wasmview_idle(this.ptr);
+        return ret !== 0;
+    }
+    /**
+    * @param {string} text
+    * @returns {boolean}
+    */
+    input(text) {
+        var ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        var len0 = WASM_VECTOR_LEN;
+        var ret = wasm.wasmview_input(this.ptr, ptr0, len0);
+        return ret !== 0;
+    }
+    /**
+    * @param {any} event
+    * @returns {boolean}
+    */
+    paste(event) {
+        var ret = wasm.wasmview_paste(this.ptr, addHeapObject(event));
+        return ret !== 0;
+    }
 }
 __exports.WasmView = WasmView;
 
@@ -409,6 +446,21 @@ function init(module) {
             handleError(e)
         }
     };
+    imports.wbg.__widl_f_clipboard_data_ClipboardEvent = function(arg0) {
+        var ret = getObject(arg0).clipboardData;
+        return isLikeNone(ret) ? 0 : addHeapObject(ret);
+    };
+    imports.wbg.__widl_f_get_data_DataTransfer = function(arg0, arg1, arg2, arg3) {
+        try {
+            var ret = getObject(arg1).getData(getStringFromWasm0(arg2, arg3));
+            var ptr0 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+            var len0 = WASM_VECTOR_LEN;
+            getInt32Memory0()[arg0 / 4 + 1] = len0;
+            getInt32Memory0()[arg0 / 4 + 0] = ptr0;
+        } catch (e) {
+            handleError(e)
+        }
+    };
     imports.wbg.__widl_f_set_attribute_Element = function(arg0, arg1, arg2, arg3, arg4) {
         try {
             getObject(arg0).setAttribute(getStringFromWasm0(arg1, arg2), getStringFromWasm0(arg3, arg4));
@@ -452,13 +504,6 @@ function init(module) {
     imports.wbg.__widl_f_meta_key_KeyboardEvent = function(arg0) {
         var ret = getObject(arg0).metaKey;
         return ret;
-    };
-    imports.wbg.__widl_f_key_KeyboardEvent = function(arg0, arg1) {
-        var ret = getObject(arg1).key;
-        var ptr0 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        var len0 = WASM_VECTOR_LEN;
-        getInt32Memory0()[arg0 / 4 + 1] = len0;
-        getInt32Memory0()[arg0 / 4 + 0] = ptr0;
     };
     imports.wbg.__widl_f_code_KeyboardEvent = function(arg0, arg1) {
         var ret = getObject(arg1).code;
