@@ -504,6 +504,13 @@ async function init(input) {
     imports.wbg.__wbg_drawElementsInstanced_475055141db3bc9c = function(arg0, arg1, arg2, arg3, arg4, arg5) {
         getObject(arg0).drawElementsInstanced(arg1 >>> 0, arg2, arg3 >>> 0, arg4, arg5);
     };
+    imports.wbg.__wbg_texImage2D_2f8490aa656c3a85 = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) {
+        try {
+            getObject(arg0).texImage2D(arg1 >>> 0, arg2, arg3, arg4, arg5, arg6, arg7 >>> 0, arg8 >>> 0, getObject(arg9));
+        } catch (e) {
+            handleError(e)
+        }
+    };
     imports.wbg.__wbg_texImage2D_82aeb1ea6f034aa7 = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {
         try {
             getObject(arg0).texImage2D(arg1 >>> 0, arg2, arg3, arg4, arg5, arg6, arg7 >>> 0, arg8 >>> 0, arg9 === 0 ? undefined : getArrayU8FromWasm0(arg9, arg10));
@@ -511,9 +518,9 @@ async function init(input) {
             handleError(e)
         }
     };
-    imports.wbg.__wbg_texSubImage2D_6c365d5baf59b58f = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) {
+    imports.wbg.__wbg_texSubImage2D_272cf6564b301edd = function(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) {
         try {
-            getObject(arg0).texSubImage2D(arg1 >>> 0, arg2, arg3, arg4, arg5, arg6, arg7 >>> 0, arg8 >>> 0, arg9 === 0 ? undefined : getArrayU8FromWasm0(arg9, arg10));
+            getObject(arg0).texSubImage2D(arg1 >>> 0, arg2, arg3, arg4, arg5, arg6, arg7 >>> 0, arg8 >>> 0, getObject(arg9));
         } catch (e) {
             handleError(e)
         }
@@ -694,6 +701,9 @@ async function init(input) {
     imports.wbg.__wbg_uniform2f_a7e768e60eb330dd = function(arg0, arg1, arg2, arg3) {
         getObject(arg0).uniform2f(getObject(arg1), arg2, arg3);
     };
+    imports.wbg.__wbg_uniform2i_655d97a4192177bf = function(arg0, arg1, arg2, arg3) {
+        getObject(arg0).uniform2i(getObject(arg1), arg2, arg3);
+    };
     imports.wbg.__wbg_uniform3f_5b44f79bab0725c0 = function(arg0, arg1, arg2, arg3, arg4) {
         getObject(arg0).uniform3f(getObject(arg1), arg2, arg3, arg4);
     };
@@ -737,6 +747,10 @@ async function init(input) {
         } catch (e) {
             handleError(e)
         }
+    };
+    imports.wbg.__wbg_now_ce4a6a89baf241c9 = function(arg0) {
+        var ret = getObject(arg0).now();
+        return ret;
     };
     imports.wbg.__wbg_setAttribute_3021f1b348fd14a5 = function(arg0, arg1, arg2, arg3, arg4) {
         try {
@@ -785,10 +799,6 @@ async function init(input) {
         } catch (e) {
             handleError(e)
         }
-    };
-    imports.wbg.__wbg_now_ce4a6a89baf241c9 = function(arg0) {
-        var ret = getObject(arg0).now();
-        return ret;
     };
     imports.wbg.__wbg_altKey_cd8189e0b7b180ac = function(arg0) {
         var ret = getObject(arg0).altKey;
@@ -872,6 +882,10 @@ async function init(input) {
         var ret = getObject(arg0).buffer;
         return addHeapObject(ret);
     };
+    imports.wbg.__wbg_newwithbyteoffsetandlength_284676320876299d = function(arg0, arg1, arg2) {
+        var ret = new Uint8Array(getObject(arg0), arg1 >>> 0, arg2 >>> 0);
+        return addHeapObject(ret);
+    };
     imports.wbg.__wbg_length_b7dc6aed3ca09be1 = function(arg0) {
         var ret = getObject(arg0).length;
         return ret;
@@ -882,6 +896,14 @@ async function init(input) {
     };
     imports.wbg.__wbg_set_4a8545284001c06f = function(arg0, arg1, arg2) {
         getObject(arg0).set(getObject(arg1), arg2 >>> 0);
+    };
+    imports.wbg.__wbg_newwithbyteoffsetandlength_b0113130daafc7e9 = function(arg0, arg1, arg2) {
+        var ret = new Uint16Array(getObject(arg0), arg1 >>> 0, arg2 >>> 0);
+        return addHeapObject(ret);
+    };
+    imports.wbg.__wbg_newwithbyteoffsetandlength_7ccfa06426575282 = function(arg0, arg1, arg2) {
+        var ret = new Float32Array(getObject(arg0), arg1 >>> 0, arg2 >>> 0);
+        return addHeapObject(ret);
     };
     imports.wbg.__wbindgen_boolean_get = function(arg0) {
         const v = getObject(arg0);
