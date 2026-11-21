@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>PDF View</title>
-        <script type="text/javascript" src="pkg/pdf_view.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-    </head>
-    <body>
-        <canvas id="canvas" tabindex="0"></canvas>
-        <script type="text/javascript" src="index.js"></script>
-        <div id="drop">
-            <input type="file" id="file-selector" onchange="show(event.target.files[0])"></input>
-            <p id="msg">loading …</p>
-            <div id="banner"><a href="https://github.com/pdf-rs/pdf/">Code</a></div>
-        </div>
-    </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pdf-rs viewer</title>
+<link rel="canonical" href="./viewer.html">
+<meta http-equiv="refresh" content="0; url=./viewer.html?pdf=logo.pdf">
+<style>
+  html, body { height: 100%; margin: 0; }
+  body { display: grid; place-items: center; font: 15px/1.5 system-ui, sans-serif;
+         background: #f3f4f7; color: #333; }
+  @media (prefers-color-scheme: dark) { body { background: #16181c; color: #ddd; } }
+  a { color: inherit; }
+</style>
+<script>
+  // The viewer opens a document named in the query; the front door hands it the
+  // sample that ships with this site. A dropped or typed file works there too.
+  if (!location.search) location.replace('./viewer.html?pdf=logo.pdf');
+</script>
+</head>
+<body>
+<p>Opening the <a href="./viewer.html?pdf=logo.pdf">pdf-rs viewer</a>…</p>
+</body>
 </html>
